@@ -1,6 +1,6 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/morning-batch-may/javaproject/amazingapp:$COMMIT_SHA', '-f', 'amazingapp/blue/Dockerfile', 'amazingapp/amazingapp/blue']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/morning-batch-may/javaproject/amazingapp:$COMMIT_SHA', '-f', 'amazingapp/blue/Dockerfile', 'amazingapp/blue']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/morning-batch-may/javaproject/amazingapp:$COMMIT_SHA']
   - name: 'gcr.io/cloud-builders/gcloud'
