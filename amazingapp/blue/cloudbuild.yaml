@@ -15,8 +15,6 @@ steps:
     - '--platform'
     - 'managed'
     - '--allow-unauthenticated'
-    - '--set-env-vars'
-    - 'PORT=8080'
 images:
   - us-central1-docker.pkg.dev/morning-batch-may/javaproject/amazingapp:$COMMIT_SHA
 options:
