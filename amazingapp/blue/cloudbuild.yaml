@@ -1,0 +1,21 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/morning-batch-may/javaproject/amazingapp:$COMMIT_SHA', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/morning-batch-may/javaproject/amazingapp:$COMMIT_SHA']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+    - 'run'
+    - 'deploy'
+    - 'amazingapp'
+    - '--image'
+    - 'us-central1-docker.pkg.dev/morning-batch-may/javaproject/amazingapp:$COMMIT_SHA'
+    - '--region'
+    - 'us-east1'
+    - '--platform'
+    - 'managed'
+    - '--allow-unauthenticated'
+images:
+  - us-central1-docker.pkg.dev/morning-batch-may/javaproject/amazingapp:$COMMIT_SHA
+options:
+  logging: CLOUD_LOGGING_ONLY
